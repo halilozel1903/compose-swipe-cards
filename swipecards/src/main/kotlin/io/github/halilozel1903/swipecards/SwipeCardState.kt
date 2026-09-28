@@ -315,9 +315,9 @@ public class SwipeCardState(
          * [Saver] storing the current index and the undo history as a flat list of ints.
          */
         public fun saver(undoCapacity: Int = SwipeHistory.DefaultCapacity): Saver<SwipeCardState, Any> =
-            listSaver(
+            listSaver<SwipeCardState, Int>(
                 save = { state ->
-                    buildList {
+                    buildList<Int> {
                         add(state.currentIndex)
                         state.history.toList().forEach { record ->
                             add(record.index)
